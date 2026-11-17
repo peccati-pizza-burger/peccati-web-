@@ -43,7 +43,7 @@ let msg;
 if(open)msg=`Abierto ahora · hasta las ${fmt(H[d][1])}`;
 else if(H[d]&&m<H[d][0])msg=`Hoy abrimos a las ${fmt(H[d][0])}`;
 else{const [k,t]=nextOpen();msg=(!H[d]?'Hoy cerrado · ':'Cerrado · ')+(k===(d+1)%7?'mañana':'el '+DN[k])+' desde las '+fmt(t)}
-$$('.status').forEach(s=>{if(s.closest('.box'))return;s.classList.toggle('open',open);s.classList.toggle('closed',!open);const t=$('span',s);if(t)t.textContent=msg});
+$$('.status').forEach(s=>{if(s.closest('.box')||s.closest('.ft-hero'))return;s.classList.toggle('open',open);s.classList.toggle('closed',!open);const t=$('span',s);if(t)t.textContent=msg});
 $$('.hours tr[data-d]').forEach(tr=>{if(tr.dataset.d.split(',').includes(String(d)))tr.classList.add('now')});
 
 /* --- oferta del día --- */
@@ -90,3 +90,19 @@ if(cv&&!RM){const ctx=cv.getContext('2d');let W,Hh,P=[],dpr=Math.min(devicePixel
 onScroll();
 $$('[data-year]').forEach(e=>e.textContent=now.getFullYear());
 })();
+
+/* --- formulario foodtruck --- */
+(()=>{const f=document.getElementById('ftForm');if(!f||!window.FT)return;
+  f.addEventListener('submit',e=>e.preventDefault());
+  f.querySelectorAll('[data-send]').forEach(b=>b.addEventListener('click',()=>{
+    const d=Object.fromEntries(new FormData(f).entries()),err=document.getElementById('ftErr');
+    if(!d.nombre||!d.telefono){err.hidden=false;return}err.hidden=true;
+    const fecha=d.fecha?new Date(d.fecha+'T12:00').toLocaleDateString('es-ES'):'';
+    const L=['Hola Peccati, quiero pedir presupuesto para la foodtruck.','','Nombre: '+d.nombre,'Teléfono: '+d.telefono];
+    if(d.email)L.push('Email: '+d.email);L.push('Tipo de evento: '+d.tipo);
+    if(fecha)L.push('Fecha: '+fecha);if(d.lugar)L.push('Lugar: '+d.lugar);if(d.personas)L.push('Personas aprox.: '+d.personas);
+    if(d.mensaje)L.push('','Comentarios: '+d.mensaje);
+    const t=L.join('\n');
+    if(b.dataset.send==='wa')location.href='https://wa.me/'+FT.wa+'?text='+encodeURIComponent(t);
+    else location.href='mailto:'+FT.mail+'?subject='+encodeURIComponent('Presupuesto foodtruck – '+d.tipo+(fecha?' – '+fecha:''))+'&body='+encodeURIComponent(t);
+  }))})();

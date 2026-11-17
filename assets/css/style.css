@@ -449,3 +449,19 @@ a.zone:hover{border-color:var(--or);background:rgba(237,121,2,.12)}
 .note+.note{margin-top:0}
 .cat__head+.note{margin-top:0}
 .cat .note:last-of-type{margin-bottom:18px}
+
+/* ===== v5: foodtruck ===== */
+.ov-ft span{font:800 12px/1 var(--fb);letter-spacing:.14em;vertical-align:middle;padding:6px 9px;border-radius:99px;background:var(--or);color:#140600;margin-left:6px}
+.ft-hero .crumbs{margin-bottom:10px}
+.ft-hero .hero__visual img{object-position:50% 40%}
+.ft-form{display:grid;grid-template-columns:1fr;gap:12px;margin-top:22px}
+.ft-form label{display:flex;flex-direction:column;gap:6px;font:700 13px/1.2 var(--fb);letter-spacing:.04em;color:#e6d3c8}
+.ft-form input,.ft-form select,.ft-form textarea{font:500 16px/1.3 var(--fb);color:var(--tx);background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:13px 14px;min-height:48px;width:100%;box-sizing:border-box;-webkit-appearance:none;appearance:none}
+.ft-form select{background-image:linear-gradient(45deg,transparent 50%,var(--or) 50%),linear-gradient(135deg,var(--or) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat}
+.ft-form select option{color:#111}
+.ft-form input:focus,.ft-form select,.ft-form textarea:focus{outline:none}
+.ft-form input:focus,.ft-form select:focus,.ft-form textarea:focus{border-color:var(--or);box-shadow:0 0 0 3px rgba(237,121,2,.25)}
+.ft-form__btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.ft-form__btns .btn{flex:1 1 200px}
+.ft-form__err{color:#ff8a70;font-weight:700;font-size:14px}
+@media (min-width:760px){.ft-form{grid-template-columns:1fr 1fr}.ft-form .full{grid-column:1/-1}}
