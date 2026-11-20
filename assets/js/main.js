@@ -51,7 +51,7 @@ const week=$('.week');
 if(week){const today=$(`.day[data-d="${d}"]`,week);
   if(today){today.classList.add('today');const tg=$('.day__tag',today);if(tg)tg.textContent='¡HOY!';
     requestAnimationFrame(()=>{week.scrollLeft=today.offsetLeft-(week.clientWidth-today.clientWidth)/2})}
-  const tb=$('.today-box p');const P={1:'<strong>3x2 en pizzas</strong>: pide 3 y paga solo 2.',2:'<strong>Martes del Peccado</strong>: 2 burgers + 2 bebidas por 19,95€.',3:'<strong>2ª burger al 50%</strong>. Hoy se pecca doble.',4:'Hoy estamos <strong>cerrados por fiesta</strong>. ¡Nos vemos mañana!',5:'<strong>Envío a domicilio GRATIS</strong>.',6:'<strong>Matcha Cookie a 1,95€</strong> (antes 3,95€).',0:'<strong>Peccacoins x2</strong>: hoy acumulas el doble.'};
+  const tb=$('.today-box p');const P={1:'<strong>3x2 en pizzas</strong>: pide 3 y paga solo 2.',2:'<strong>Martes del Peccado</strong>: 2 burgers + 2 bebidas por 19,95€.',3:'<strong>2ª burger al 50%</strong>. Hoy se pecca doble.',4:'Hoy estamos <strong>cerrados por fiesta</strong>. ¡Nos vemos mañana!',5:'<strong>Envío a domicilio GRATIS</strong>.',6:'<strong>2 Tequeños de Nutella a 1,95€</strong> (antes 3,95€).',0:'<strong>Peccacoins x2</strong>: hoy acumulas el doble.'};
   if(tb)tb.innerHTML=(d===4?'':'Hoy: ')+P[d]}
 
 /* --- tabs carta con scroll-spy --- */
